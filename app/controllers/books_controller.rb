@@ -4,14 +4,15 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    if @book.save
-      flash[:notice] = "投稿が成功しました"
-    redirect_to books_path
-    else
+     @book = Book.new(book_params)
+     @book.user_id = current_user.id
+   if @book.save
+     flash[:notice] = "successfully"
+     redirect_to books_path
+   else
+     flash[:notic]="error"
   　 remder :new
-  　 end
+   end
   end
 
   def index
@@ -23,7 +24,6 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = current_user
-
   end
 
   def destroy
@@ -33,14 +33,20 @@ class BooksController < ApplicationController
   end
 
   def edit
-    user_id = params[:id]
-    login_user_id = current_user.id
-  if user_id != login_user_id
-    redirect_to post_images_path
-  end
-
     @book = Book.find(params[:id])
   end
+  
+  def update
+    @books =Book.find(book_params)
+    if @book.save
+      flash[:notice] = "successfully"
+      redirect_to book_path(@book.id)
+    else
+      flash[:notice] = "error"
+      redict:edit
+    end
+  end
+    
 
   private
 

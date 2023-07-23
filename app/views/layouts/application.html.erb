@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2 ver2</title>
+    <title>試作</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,39 +12,57 @@
   </head>
 
 <header>
- <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="container">
+        <a class="navbar-brand"><%= link_to "Bookers", root_path, class: "text-light" %></a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand">Bookers</a>
-        <div class="collapse navbar-collapse justify-content-end">
-    <ul class="navbar-nav">
+        <!--<div class="collapse navbar-collapse justify-content-end">-->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
-      <div class="collapse navbar-collapse justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link"><i class="fa-solid fa-house" style="color: white"></i><%= link_to "Home", root_path %></a>
+      <!--<div class="collapse navbar-collapse justify-content-end">-->
+      <li>
+        <%= link_to root_path, class: "nav-link text-light" do %>
+         <i class="fa-solid fa-house" style="color: white"></i>Home
+        <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"><i class="fa-solid fa-users" style="color: white"></i><%= link_to "Users", users_path %></a>
+      <li>
+        <%= link_to users_path, class: "nav-link text-light" do %>
+         <i class="fa-solid fa-users" style="color: white"></i>Users
+        <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"><i class="fa-solid fa-book-open" style="color: white"></i><%= link_to "Books", books_path%></a>
+      <li>
+        <%= link_to  books_path, class: "nav-link text-light" do %>
+         <i class="fa-solid fa-book-open" style="color: white"></i>Books
+        <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"><i class="fa-solid fa-right-from-bracket"  style="color: white"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %></a>
+      <li>
+        <%= link_to  destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+         <i class="fa-solid fa-right-from-bracket"  style="color: white"></i>Log out
+        <% end %>
       </li>
       <% else %>
-      <li class="nav-item">
-        <a class="nav-link"><i class="fa-solid fa-house" style="color: white"></i><%= link_to "Home", root_path %></a>
+      <li>
+       <%= link_to root_path, class: "nav-link text-light" do %>
+        <i class="fa-solid fa-house" style="color: white"></i>Home
+       <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"><i class="fa-solid fa-link" style="color: white"></i><%= link_to "About", about_path %></a>
+      <li>
+       <%= link_to about_path, class: "nav-link text-light" do %>
+       　<i class="fa-solid fa-link" style="color: white"></i>About
+       <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"><i class="fa-solid fa-user-plus" style="color: white"></i><%= link_to "Sign up", new_user_registration_path %></a>
+      <li>
+        <%= link_to new_user_registration_path,class: "nav-link text-light" do %>
+         <i class="fa-solid fa-user-plus" style="color: white"></i>Sign up
+        <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"><i class="fa-solid fa-right-to-bracket" ></i><%= link_to "Log in", new_user_session_path %></a>
+      <li>
+       <%= link_to new_user_session_path,class: "nav-link text-light" do %>
+        <i class="fa-solid fa-right-to-bracket" style="color: white"></i>Log in
+       <% end %>
       </li>
       <% end %>
      </ul>
@@ -54,9 +72,12 @@
 </header>
 
 <main>
-<div style="text-align:center">
-    <div><%= yield %></div>
+ <div>
+ <%= flash[:notice] %>
 </div>
+
+    <div><%= yield %></div>
+
     </main>
 
 

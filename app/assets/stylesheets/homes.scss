@@ -1,3 +1,14 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.btn {
+ padding: 10px 30px;
+ background: blue;
+ color: #ffffff;
+}
+
+
+.btn:hover {
+ opacity: 0.7;
+}
