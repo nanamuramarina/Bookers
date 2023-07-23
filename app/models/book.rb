@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
   has_one_attached :image
   belongs_to :user
-  validatesra :title, presence: true
-  validate :body, length:{maxmum:50}
+  validates :title, presence: true
+  validates :body, length:{maximum:200}, presence:true
 end

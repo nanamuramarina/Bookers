@@ -14,7 +14,9 @@
 <header>
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container">
-        <a class="navbar-brand"><%= link_to "Bookers", root_path, class: "text-light" %></a>
+        <%= link_to root_path, class: "text-light" do%>
+        <i class="navbar-brand"></i>Bookers
+        <% end %>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,8 +26,8 @@
       <% if user_signed_in? %>
       <!--<div class="collapse navbar-collapse justify-content-end">-->
       <li>
-        <%= link_to root_path, class: "nav-link text-light" do %>
-         <i class="fa-solid fa-house" style="color: white"></i>Home
+        <%= link_to current_user, class: "nav-link text-light" do %>
+         <i class= "fas fa-home" style="color: white"></i>Home
         <% end %>
       </li>
       <li>
@@ -40,18 +42,18 @@
       </li>
       <li>
         <%= link_to  destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
-         <i class="fa-solid fa-right-from-bracket"  style="color: white"></i>Log out
+         <i class= "fas fa-sign-out-alt" style="color: white"></i>Log out
         <% end %>
       </li>
       <% else %>
       <li>
        <%= link_to root_path, class: "nav-link text-light" do %>
-        <i class="fa-solid fa-house" style="color: white"></i>Home
+        <i class="fas fa-home" style="color: white"></i>Home
        <% end %>
       </li>
       <li>
        <%= link_to about_path, class: "nav-link text-light" do %>
-       　<i class="fa-solid fa-link" style="color: white"></i>About
+        <i class="fa-solid fa-link" style="color: white"></i>About
        <% end %>
       </li>
       <li>
@@ -61,7 +63,7 @@
       </li>
       <li>
        <%= link_to new_user_session_path,class: "nav-link text-light" do %>
-        <i class="fa-solid fa-right-to-bracket" style="color: white"></i>Log in
+        <i class= "fas fa-sign-in-alt" style="color: white"></i>Log in
        <% end %>
       </li>
       <% end %>
