@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -38,15 +39,16 @@ class UsersController < ApplicationController
   def update
     user_id = params[:id]
     login_user_id = current_user.id
-   if(user_id != login_user_id)
-     redirect_to users_path
+   if(user_id.to_i != login_user_id)
+     redirect_to user_path
    end
     @user = User.find(current_user.id)
    if @user.update(user_params)
-    flash[:notic] = "successfully"
+     flash[:notice] = "successfully"
+     redirect_to user_path(current_user.id)
    else
-    flash[:nitic]="error"
-    redict:edit
+    flash[:notice]="error"
+    render :edit
    end
   end
 
